@@ -3,10 +3,13 @@ import { Platform, SafeAreaView, ScrollView, StatusBar, Text, TouchableOpacity, 
 import { Bars3CenterLeftIcon, MagnifyingGlassIcon } from 'react-native-heroicons/outline'
 import { styles } from '../theme'
 import TrendingMovies from '../components/trendingMovies'
+import MovieList from '../components/movieList'
 const ios = Platform.OS === 'ios'
 
 export default function HomeScreen() {
     const [trending, setTrending] = useState([1, 2, 3])
+    const [upcoming, setUpcoming] = useState([1, 2, 3])
+    const [topRated, setTopRated] = useState([1, 2, 3])
     return (
         <View className=" flex-1 bg-neutral-800 ">
             {/* search bar and logo  */}
@@ -32,6 +35,14 @@ export default function HomeScreen() {
                 {/* Trending Movies Carousel */}
 
                 <TrendingMovies data={trending} />
+
+                {/* Upcoming movies */}
+
+                <MovieList title="Upcoming" data={upcoming} />
+
+                {/* top rated movies */}
+
+                <MovieList title="Top Rated" data={topRated} />
 
             </ScrollView>
         </View>
