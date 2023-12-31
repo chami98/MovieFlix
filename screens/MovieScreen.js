@@ -5,6 +5,7 @@ import { ChevronLeftIcon } from 'react-native-heroicons/outline'
 import { HeartIcon } from 'react-native-heroicons/solid'
 import { styles, theme } from '../theme'
 import { LinearGradient } from 'expo-linear-gradient'
+import Cast from '../components/cast'
 
 var { width, height } = Dimensions.get('window');
 const ios = Platform.OS === 'ios'
@@ -15,6 +16,7 @@ let movieName = "Avengers";
 export default function MovieScreen() {
     const { params: item } = useRoute()
     const [isFavorite, toggleFavorite] = useState(false)
+    const [cast, setCast] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
     const navigation = useNavigation();
     useEffect(() => {
         //    call the API
@@ -87,6 +89,8 @@ export default function MovieScreen() {
                     super heroes team up to save the world from a new & dangerous threat .
                     super heroes team up to save the world from a new & dangerous threat .
                 </Text>
+
+                <Cast cast={cast} />
             </View>
         </ScrollView>
     )
