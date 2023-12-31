@@ -6,6 +6,7 @@ import { HeartIcon } from 'react-native-heroicons/solid'
 import { styles, theme } from '../theme'
 import { LinearGradient } from 'expo-linear-gradient'
 import Cast from '../components/cast'
+import MovieList from '../components/movieList'
 
 var { width, height } = Dimensions.get('window');
 const ios = Platform.OS === 'ios'
@@ -17,6 +18,7 @@ export default function MovieScreen() {
     const { params: item } = useRoute()
     const [isFavorite, toggleFavorite] = useState(false)
     const [cast, setCast] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+    const [similarMovies, setSimilarMovies] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
     const navigation = useNavigation();
     useEffect(() => {
         //    call the API
@@ -90,7 +92,15 @@ export default function MovieScreen() {
                     super heroes team up to save the world from a new & dangerous threat .
                 </Text>
 
-                <Cast cast={cast} />
+                {/* cast */}
+
+                <Cast navigation={navigation} cast={cast} />
+
+                {/* similar movies */}
+
+                <MovieList title="Similar Movies" hideSeeAll={true} data={similarMovies} />
+
+
             </View>
         </ScrollView>
     )
