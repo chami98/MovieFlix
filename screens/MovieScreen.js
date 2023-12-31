@@ -58,7 +58,25 @@ export default function MovieScreen() {
                         movieName
                     }
                 </Text>
+                {/* status , release ,runtime */}
+                <Text className="text-neutral-400 font-semibold text-base text-center">
+                    Relased • 2020 • 170min
+                </Text>
 
+                {/* genres */}
+                <View className="flex-row justify-center mx-4 space-x-2">
+
+                    <Text className="text-neutral-400 font-semibold text-base text-center">
+                        Action •
+                    </Text>
+                    <Text className="text-neutral-400 font-semibold text-base text-center">
+                        Thriller •
+                    </Text>
+                    <Text className="text-neutral-400 font-semibold text-base text-center">
+                        Comedy
+                    </Text>
+
+                </View>
             </View>
         </ScrollView>
     )
