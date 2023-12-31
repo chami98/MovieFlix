@@ -2,6 +2,7 @@ import { View, Text, Dimensions, SafeAreaView, TextInput, TouchableOpacity, Scro
 import React, { useState } from 'react'
 import { XMarkIcon } from 'react-native-heroicons/outline';
 import { useNavigation } from '@react-navigation/native';
+import Loading from '../components/loading';
 
 const { width, height } = Dimensions.get('window');
 
@@ -11,6 +12,7 @@ const topMargin = ios ? '' : ' mt-3';
 
 export default function SearchScreen() {
     const [results, setResults] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+    const [loading, setLoading] = useState(false);
     let movieName = "Avengers";
     const navigation = useNavigation();
     return (
@@ -31,47 +33,49 @@ export default function SearchScreen() {
 
             {/* results */}
 
-            {results.length > 0 ? (
-                <ScrollView
-                    showsHorizontalScrollIndicator={false}
-                    contentContainerStyle={{ paddingHorizontal: 15 }}
-                    className="space-y-3"
-                >
+            {loading ? (<Loading />) : (
+                results.length > 0 ? (
+                    <ScrollView
+                        showsHorizontalScrollIndicator={false}
+                        contentContainerStyle={{ paddingHorizontal: 15 }}
+                        className="space-y-3"
+                    >
 
-                    <Text className="text-white font-semibold ml-1">Results ({results.length}) </Text>
-                    <View className="flex-row justify-between flex-wrap">
-                        {
-                            results.map((item, index) => (
-                                <TouchableWithoutFeedback
-                                    key={index}
-                                    onPress={() => navigation.push('Movie', item)}
-                                >
-                                    <View className="space-y-2 mb-4">
-                                        <Image
-                                            className="rounded-3xl"
-                                            source={require('../assets/images/moviePoster2.png')}
-                                            style={{ width: width * 0.44, height: height * 0.3 }}
-                                        />
-                                        <Text className="text-neutral-400 ml-1">
-                                            {movieName.length > 22 ? movieName.slice(0, 22) + '...' : movieName}
-                                        </Text>
-                                    </View>
-                                </TouchableWithoutFeedback>
-                            ))
-                        }
+                        <Text className="text-white font-semibold ml-1">Results ({results.length}) </Text>
+                        <View className="flex-row justify-between flex-wrap">
+                            {
+                                results.map((item, index) => (
+                                    <TouchableWithoutFeedback
+                                        key={index}
+                                        onPress={() => navigation.push('Movie', item)}
+                                    >
+                                        <View className="space-y-2 mb-4">
+                                            <Image
+                                                className="rounded-3xl"
+                                                source={require('../assets/images/moviePoster2.png')}
+                                                style={{ width: width * 0.44, height: height * 0.3 }}
+                                            />
+                                            <Text className="text-neutral-400 ml-1">
+                                                {movieName.length > 22 ? movieName.slice(0, 22) + '...' : movieName}
+                                            </Text>
+                                        </View>
+                                    </TouchableWithoutFeedback>
+                                ))
+                            }
 
-                    </View>
+                        </View>
 
-                </ScrollView>
+                    </ScrollView>
 
-            ) : (
-                <View className="flex-row justify-center">
-                    <Image
-                        source={require('../assets/images/movieTime.png')}
-                        className="h-96 w-96"
-                    />
+                ) : (
+                    <View className="flex-row justify-center">
+                        <Image
+                            source={require('../assets/images/movieTime.png')}
+                            className="h-96 w-96"
+                        />
 
-                </View>)}
+                    </View>))}
+
         </SafeAreaView>
     )
 }
