@@ -75,8 +75,18 @@ export default function MovieScreen() {
                     <Text className="text-neutral-400 font-semibold text-base text-center">
                         Comedy
                     </Text>
-
                 </View>
+
+                {/* description */}
+
+                <Text className="text-neutral-400 mx-4 tracking-wide">
+                    super heroes team up to save the world from a new & dangerous threat .
+                    super heroes team up to save the world from a new & dangerous threat .
+                    super heroes team up to save the world from a new & dangerous threat .
+                    super heroes team up to save the world from a new & dangerous threat .
+                    super heroes team up to save the world from a new & dangerous threat .
+                    super heroes team up to save the world from a new & dangerous threat .
+                </Text>
             </View>
         </ScrollView>
     )
