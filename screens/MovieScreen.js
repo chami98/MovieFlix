@@ -4,6 +4,7 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import { ChevronLeftIcon } from 'react-native-heroicons/outline'
 import { HeartIcon } from 'react-native-heroicons/solid'
 import { styles, theme } from '../theme'
+import { LinearGradient } from 'expo-linear-gradient'
 
 var { width, height } = Dimensions.get('window');
 const ios = Platform.OS === 'ios'
@@ -37,6 +38,13 @@ export default function MovieScreen() {
                     <Image
                         source={require('../assets/images/moviePoster2.png')}
                         style={{ width: width, height: height * 0.55 }} />
+                    <LinearGradient
+                        colors={['transparent', 'rgba(23,23,23,0.8), rgba(23,23,23,1)']}
+                        style={{ width: width, height: height * 0.40 }}
+                        start={{ x: 0.5, y: 0 }}
+                        end={{ x: 0.5, y: 1 }}
+                        className="absolute bottom-0"
+                    />
                 </View>
             </View>
 
