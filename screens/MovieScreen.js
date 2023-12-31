@@ -9,6 +9,8 @@ import { LinearGradient } from 'expo-linear-gradient'
 var { width, height } = Dimensions.get('window');
 const ios = Platform.OS === 'ios'
 const topMargin = ios ? '' : ' mt-3';
+let movieName = "Avengers";
+
 
 export default function MovieScreen() {
     const { params: item } = useRoute()
@@ -47,7 +49,17 @@ export default function MovieScreen() {
                     />
                 </View>
             </View>
+            {/* Movie Deatils */}
+            <View style={{ marginTop: -(height * 0.09) }} className="space-y-3">
+                {/* title  */}
 
+                <Text className="text-white text-center text-3xl font-bold tracking-wider">
+                    {
+                        movieName
+                    }
+                </Text>
+
+            </View>
         </ScrollView>
     )
 }
