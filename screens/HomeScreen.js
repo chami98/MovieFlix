@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react'
+import React, { Component, useEffect, useState } from 'react'
 import { Platform, SafeAreaView, ScrollView, StatusBar, Text, TouchableOpacity, View } from 'react-native'
 import { Bars3CenterLeftIcon, MagnifyingGlassIcon } from 'react-native-heroicons/outline'
 import { styles } from '../theme'
@@ -6,6 +6,7 @@ import TrendingMovies from '../components/trendingMovies'
 import MovieList from '../components/movieList'
 import { useNavigation } from '@react-navigation/native'
 import Loading from '../components/loading'
+import { fetchTrendingMovies } from '../api/moviedb'
 const ios = Platform.OS === 'ios'
 
 export default function HomeScreen() {
@@ -15,6 +16,15 @@ export default function HomeScreen() {
     const [loading, setLoading] = useState(false)
 
     const navigation = useNavigation();
+
+    useEffect(() => {
+        getTrendingMovies()
+    }, [])
+
+    const getTrendingMovies = async () => {
+        const data = await fetchTrendingMovies();
+        console.log('Got trending movies', data);
+    }
     return (
         <View className=" flex-1 bg-neutral-800 ">
             {/* search bar and logo  */}
