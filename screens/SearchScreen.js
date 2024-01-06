@@ -1,16 +1,20 @@
+// Import necessary modules and components
 import { View, Text, Dimensions, SafeAreaView, TextInput, TouchableOpacity, ScrollView, Platform, TouchableWithoutFeedback, Image } from 'react-native'
 import React, { useState } from 'react'
 import { XMarkIcon } from 'react-native-heroicons/outline';
 import { useNavigation } from '@react-navigation/native';
 import Loading from '../components/loading';
 
+// Get screen dimensions
 const { width, height } = Dimensions.get('window');
 
+// Check if the platform is iOS
 const ios = Platform.OS === 'ios'
 const topMargin = ios ? '' : ' mt-3';
 
-
+// Main component
 export default function SearchScreen() {
+    // State for search results and loading status
     const [results, setResults] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
     const [loading, setLoading] = useState(false);
     let movieName = "Avengers";
@@ -19,20 +23,19 @@ export default function SearchScreen() {
         <SafeAreaView className="bg-neutral-800 flex-1">
             <View className="mx-4 flex-row justify-between items-center border border-neutral-500 rounded-full">
                 <TextInput
-
                     placeholder='Search Movie'
                     placeholderTextColor={'lightgray'}
                     className="pb-1 pl-1 flex-1 text-base font-semibold text-white tracking-wider" />
 
                 <TouchableOpacity
+                    // Navigate back to Home when pressed
                     onPress={() => navigation.navigate('Home')}
                     className="rounded-full p-3 m-1 bg-neutral-500">
                     <XMarkIcon size="25" color="white" />
                 </TouchableOpacity>
             </View>
 
-            {/* results */}
-
+            {/* Display loading component if loading, else display results */}
             {loading ? (<Loading />) : (
                 results.length > 0 ? (
                     <ScrollView
@@ -47,6 +50,7 @@ export default function SearchScreen() {
                                 results.map((item, index) => (
                                     <TouchableWithoutFeedback
                                         key={index}
+                                        // Navigate to Movie screen when pressed
                                         onPress={() => navigation.push('Movie', item)}
                                     >
                                         <View className="space-y-2 mb-4">
