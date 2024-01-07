@@ -15,9 +15,13 @@ const verticalMargin = ios ? '' : ' my-3';
 
 export default function PersonScreen() {
 
+    // Use the navigation hook from react-navigation
     const navigation = useNavigation();
+    // State variable for favorite status, with initial value as false
     const [isFavorite, toggleFavorite] = useState(false);
+    // State variable for person's movies, with initial values as an array of numbers from 1 to 10
     const [personMovies, setPersonMovies] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+    // State variable for loading status, with initial value as false
     const [loading, setLoading] = useState(false);
 
     return (
