@@ -16,11 +16,17 @@ let movieName = "Avengers";
 
 
 export default function MovieScreen() {
-    const { params: item } = useRoute()
-    const [isFavorite, toggleFavorite] = useState(false)
-    const [cast, setCast] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-    const [similarMovies, setSimilarMovies] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-    const [loading, setLoading] = useState(false)
+    // Use the route hook from react-navigation to get the parameters passed to this screen
+    const { params: item } = useRoute();
+    // State variable for favorite status, with initial value as false
+    const [isFavorite, toggleFavorite] = useState(false);
+    // State variable for cast members, with initial values as an array of numbers from 1 to 10
+    const [cast, setCast] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+    // State variable for similar movies, with initial values as an array of numbers from 1 to 10
+    const [similarMovies, setSimilarMovies] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+    // State variable for loading status, with initial value as false
+    const [loading, setLoading] = useState(false);
+    // Use the navigation hook from react-navigation
     const navigation = useNavigation();
     useEffect(() => {
         //    call the API
