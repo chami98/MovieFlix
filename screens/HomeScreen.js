@@ -31,16 +31,19 @@ export default function HomeScreen() {
     }
     return (
         <View className=" flex-1 bg-neutral-800 ">
-            {/* search bar and logo  */}
+            {/* Search bar and logo section */}
 
             <SafeAreaView className={ios ? "-mb-2" : "mb-3"}>
                 <StatusBar style="light" />
                 <View className="flex-row justify-between items-center mx-4" >
+                    {/* Menu icon */}
                     <Bars3CenterLeftIcon size="30" strokeWidth={2} color="white" />
+                    {/* App logo */}
                     <Text
                         className="text-white text-3xl font-bold">
                         <Text style={styles.text}>M</Text>ovie<Text style={styles.text}>F</Text>lix
                     </Text>
+                    {/* Search icon, navigates to Search screen on press */}
                     <TouchableOpacity onPress={() => navigation.navigate('Search')}>
                         <MagnifyingGlassIcon size="30" strokeWidth="2" color="white" />
                     </TouchableOpacity>
@@ -48,6 +51,7 @@ export default function HomeScreen() {
             </SafeAreaView>
 
             {
+                // Show loading indicator if data is still loading, else show the content
                 loading ? (
                     <Loading />
                 ) : (
@@ -55,16 +59,13 @@ export default function HomeScreen() {
                         showsVerticalScrollIndicator={false}
                         contentContainerStyle={{ paddingBottom: 10 }}
                     >
-                        {/* Trending Movies Carousel */}
-
+                        {/* Carousel for trending movies */}
                         <TrendingMovies data={trending} />
 
-                        {/* Upcoming movies */}
-
+                        {/* List of upcoming movies */}
                         <MovieList title="Upcoming" data={upcoming} />
 
-                        {/* top rated movies */}
-
+                        {/* List of top rated movies */}
                         <MovieList title="Top Rated" data={topRated} />
 
                     </ScrollView>)
