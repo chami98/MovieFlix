@@ -10,9 +10,13 @@ import { fetchTrendingMovies } from '../api/moviedb'
 const ios = Platform.OS === 'ios'
 
 export default function HomeScreen() {
+    // State variable for trending movies, with initial values as an array of numbers from 1 to 3
     const [trending, setTrending] = useState([1, 2, 3])
+    // State variable for upcoming movies, with initial values as an array of numbers from 1 to 3
     const [upcoming, setUpcoming] = useState([1, 2, 3])
+    // State variable for top rated movies, with initial values as an array of numbers from 1 to 3
     const [topRated, setTopRated] = useState([1, 2, 3])
+    // State variable for loading status, with initial value as false
     const [loading, setLoading] = useState(false)
 
     const navigation = useNavigation();
