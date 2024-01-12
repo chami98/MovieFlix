@@ -39,14 +39,20 @@ export default function SearchScreen() {
             {loading ? (<Loading />) : (
                 results.length > 0 ? (
                     <ScrollView
+                        // Disable horizontal scroll indicator
                         showsHorizontalScrollIndicator={false}
+                        // Add padding to the content of the scroll view
                         contentContainerStyle={{ paddingHorizontal: 15 }}
                         className="space-y-3"
                     >
 
+                        {/* Display the number of search results */}
                         <Text className="text-white font-semibold ml-1">Results ({results.length}) </Text>
+
+                        {/* Container for search results */}
                         <View className="flex-row justify-between flex-wrap">
                             {
+                                // Map through the results array and display each result
                                 results.map((item, index) => (
                                     <TouchableWithoutFeedback
                                         key={index}
@@ -54,21 +60,22 @@ export default function SearchScreen() {
                                         onPress={() => navigation.push('Movie', item)}
                                     >
                                         <View className="space-y-2 mb-4">
+                                            {/* Movie poster */}
                                             <Image
                                                 className="rounded-3xl"
                                                 source={require('../assets/images/moviePoster2.png')}
                                                 style={{ width: width * 0.44, height: height * 0.3 }}
                                             />
+                                            {/* Movie name */}
                                             <Text className="text-neutral-400 ml-1">
+                                                {/* If the movie name is longer than 22 characters, truncate it */}
                                                 {movieName.length > 22 ? movieName.slice(0, 22) + '...' : movieName}
                                             </Text>
                                         </View>
                                     </TouchableWithoutFeedback>
                                 ))
                             }
-
                         </View>
-
                     </ScrollView>
 
                 ) : (
