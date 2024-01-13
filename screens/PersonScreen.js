@@ -27,8 +27,7 @@ export default function PersonScreen() {
     return (
         <ScrollView className="flex-1 bg-neutral-900" contentContainerStyle={{ paddingBottom: 20 }}>
 
-            {/* back button  */}
-
+            {/* Back button */}
             <SafeAreaView className={"z-20 w-full flex-row justify-between items-center px-4 " + verticalMargin}>
                 <TouchableOpacity onPress={() => navigation.goBack()} style={styles.background} className="rounded-xl p-1">
                     <ChevronLeftIcon size="28" strokeWidth="2.8" color="white" />
@@ -38,8 +37,7 @@ export default function PersonScreen() {
                 </TouchableOpacity>
             </SafeAreaView>
 
-            {/* person details  */}
-
+            {/* Person details */}
             {loading ? (<Loading />) : (
                 <View>
                     <View
@@ -52,6 +50,7 @@ export default function PersonScreen() {
                         }}
                     >
                         <View className="items-center rounded-full overflow-hidden h-72 w-72 border-2 border-neutral-500">
+                            {/* Placeholder image, replace with dynamic source */}
                             <Image
                                 source={require('../assets/images/castImage2.png')}
                                 style={{ width: width * 0.74, height: height * 0.43 }}
@@ -60,14 +59,17 @@ export default function PersonScreen() {
                     </View>
                     <View className="mt-6">
                         <Text className="text-3xl text-white font-bold text-center">
+                            {/* Replace with dynamic person name */}
                             Keanu Reeves
                         </Text>
 
                         <Text className="text-base text-neutral-500 text-center ">
-                            London , England
+                            {/* Replace with dynamic location */}
+                            London, England
                         </Text>
                     </View>
                     <View className="mx-3 p-4 mt-6 flex-row justify-between items-center bg-neutral-700 rounded-full">
+                        {/* Displaying various details */}
                         <View className="border-r-2 border-r-neutral-400 px-2 items-center">
                             <Text className="text-white font-semibold">Gender</Text>
                             <Text className="text-neutral-300 text-sm">Male</Text>
@@ -91,17 +93,18 @@ export default function PersonScreen() {
                             Biography
                         </Text>
                         <Text className="text-neutral-400 tracking-wide">
+                            {/* Replace with dynamic biography content */}
                             Lorem ipsu dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.
                         </Text>
                     </View>
 
-                    {/* movies */}
-
+                    {/* Movies */}
+                    {/* Replace 'Movies' with a dynamic title */}
                     <MovieList title={'Movies'} hideSeeAll={true} data={personMovies} />
                 </View>
             )}
 
-
         </ScrollView>
+
     )
 }
