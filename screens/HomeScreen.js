@@ -64,7 +64,7 @@ export default function HomeScreen() {
                         contentContainerStyle={{ paddingBottom: 10 }}
                     >
                         {/* Carousel for trending movies */}
-                        <TrendingMovies data={trending} />
+                        {trending.length > 0 && <TrendingMovies data={trending} />}
 
                         {/* List of upcoming movies */}
                         <MovieList title="Upcoming" data={upcoming} />
