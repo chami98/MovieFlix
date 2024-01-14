@@ -28,6 +28,10 @@ export default function HomeScreen() {
     const getTrendingMovies = async () => {
         const data = await fetchTrendingMovies();
         console.log('Got trending movies', data);
+        if (data && data.results) {
+            setTrending(data.results);
+            setLoading(false);
+        }
     }
     return (
         <View className=" flex-1 bg-neutral-800 ">
