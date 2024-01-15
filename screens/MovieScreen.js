@@ -16,14 +16,20 @@ const topMargin = ios ? '' : ' mt-3';
 var { width, height } = Dimensions.get('window');
 
 export default function MovieScreen() {
+    // Use the route hook from react-navigation to get the parameters passed to this screen
     const { params: item } = useRoute();
+    // Use the navigation hook from react-navigation
     const navigation = useNavigation();
+    // State variable for the movie details, with initial value as an empty object
     const [movie, setMovie] = useState({});
-    const [cast, setCast] = useState([])
-    const [similarMovies, setSimilarMovies] = useState([])
+    // State variable for cast members, with initial values as an empty array
+    const [cast, setCast] = useState([]);
+    // State variable for similar movies, with initial values as an empty array
+    const [similarMovies, setSimilarMovies] = useState([]);
+    // State variable for favorite status, with initial value as false
     const [isFavourite, toggleFavourite] = useState(false);
+    // State variable for loading status, with initial value as false
     const [loading, setLoading] = useState(false);
-
 
 
     useEffect(() => {
