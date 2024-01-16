@@ -32,36 +32,51 @@ export default function MovieScreen() {
     const [loading, setLoading] = useState(false);
 
 
+    // Use effect hook to fetch movie details, credits, and similar movies when the component mounts
     useEffect(() => {
+        // Set loading to true
         setLoading(true);
+        // Fetch movie details
         getMovieDetials(item.id);
+        // Fetch movie credits
         getMovieCredits(item.id);
+        // Fetch similar movies
         getSimilarMovies(item.id);
     }, [item]);
 
+    // Function to fetch movie details
     const getMovieDetials = async id => {
+        // Fetch movie details
         const data = await fetchMovieDetails(id);
         console.log('got movie details');
+        // Set loading to false
         setLoading(false);
+        // If data is returned, update the movie state
         if (data) {
             setMovie({ ...movie, ...data });
         }
     }
+
+    // Function to fetch movie credits
     const getMovieCredits = async id => {
+        // Fetch movie credits
         const data = await fetchMovieCredits(id);
         console.log('got movie credits')
+        // If data is returned and it contains cast, update the cast state
         if (data && data.cast) {
             setCast(data.cast);
         }
-
     }
+
+    // Function to fetch similar movies
     const getSimilarMovies = async id => {
+        // Fetch similar movies
         const data = await fetchSimilarMovies(id);
         console.log('got similar movies');
+        // If data is returned and it contains results, update the similarMovies state
         if (data && data.results) {
             setSimilarMovies(data.results);
         }
-
     }
     return (
         <ScrollView
