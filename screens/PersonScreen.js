@@ -14,34 +14,51 @@ const verticalMargin = ios ? '' : ' my-3';
 var { width, height } = Dimensions.get('window');
 
 export default function PersonScreen() {
+    // Use the route hook from react-navigation to get the parameters passed to this screen
     const { params: item } = useRoute();
+    // State variable for favorite status, with initial value as false
     const [isFavourite, toggleFavourite] = useState(false);
+    // Use the navigation hook from react-navigation
     const navigation = useNavigation();
+    // State variable for the person details, with initial value as an empty object
     const [person, setPerson] = useState({});
+    // State variable for the person's movies, with initial values as an empty array
     const [personMovies, setPersonMovies] = useState([]);
+    // State variable for loading status, with initial value as false
     const [loading, setLoading] = useState(false);
 
+    // Use effect hook to fetch person details and their movies when the component mounts
     useEffect(() => {
+        // Set loading to true
         setLoading(true);
+        // Fetch person details
         getPersonDetails(item.id);
+        // Fetch person's movies
         getPersonMovies(item.id);
     }, [item]);
 
+    // Function to fetch person details
     const getPersonDetails = async id => {
+        // Fetch person details
         const data = await fetchPersonDetails(id);
         console.log('got person details');
+        // Set loading to false
         setLoading(false);
+        // If data is returned, update the person state
         if (data) {
             setPerson(data);
         }
     }
+
+    // Function to fetch person's movies
     const getPersonMovies = async id => {
+        // Fetch person's movies
         const data = await fetchPersonMovies(id);
         console.log('got person movies')
+        // If data is returned and it contains cast, update the personMovies state
         if (data && data.cast) {
             setPersonMovies(data.cast);
         }
-
     }
 
     return (
