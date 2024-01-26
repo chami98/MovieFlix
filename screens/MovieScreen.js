@@ -99,16 +99,23 @@ export default function MovieScreen() {
                         <Loading />
                     ) : (
                         <View>
+                            {/* Display the movie poster */}
                             <Image
-                                // source={require('../assets/images/moviePoster2.png')} 
+                                // The source of the image is either the movie poster path or a fallback poster
                                 source={{ uri: image500(movie.poster_path) || fallbackMoviePoster }}
+                                // The width is set to the full width of the screen, and the height is set to 55% of the screen height
                                 style={{ width, height: height * 0.55 }}
                             />
+                            {/* Add a gradient overlay to the bottom of the image */}
                             <LinearGradient
+                                // The gradient starts as transparent and transitions to a dark color
                                 colors={['transparent', 'rgba(23, 23, 23, 0.8)', 'rgba(23, 23, 23, 1)']}
+                                // The gradient covers the bottom 40% of the image
                                 style={{ width, height: height * 0.40 }}
+                                // The gradient starts at the center-top of the image and ends at the center-bottom
                                 start={{ x: 0.5, y: 0 }}
                                 end={{ x: 0.5, y: 1 }}
+                                // Position the gradient at the bottom of the image
                                 className="absolute bottom-0"
                             />
                         </View>
