@@ -11,13 +11,20 @@ const { width, height } = Dimensions.get('window');
 
 
 export default function SearchScreen() {
+    // Use the navigation hook from react-navigation
     const navigation = useNavigation();
+    // State variable for loading status, with initial value as false
     const [loading, setLoading] = useState(false);
+    // State variable for the search results, with initial value as an empty array
     const [results, setResults] = useState([])
 
+    // Function to handle search
     const handleSearch = search => {
+        // If the search term is longer than 2 characters
         if (search && search.length > 2) {
+            // Set loading to true
             setLoading(true);
+            // Search for movies with the given search term
             searchMovies({
                 query: search,
                 include_adult: false,
@@ -25,16 +32,17 @@ export default function SearchScreen() {
                 page: '1'
             }).then(data => {
                 console.log('got search results');
+                // Set loading to false
                 setLoading(false);
+                // If data is returned and it contains results, update the results state
                 if (data && data.results) setResults(data.results);
             })
         } else {
+            // If the search term is not longer than 2 characters, set loading to false and clear the results
             setLoading(false);
             setResults([])
         }
     }
-
-    const handleTextDebounce = useCallback(debounce(handleSearch, 400), []);
 
     return (
         <SafeAreaView className="bg-neutral-800 flex-1">
