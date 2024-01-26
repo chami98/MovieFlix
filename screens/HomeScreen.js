@@ -18,18 +18,23 @@ export default function HomeScreen() {
     const [topRated, setTopRated] = useState([1, 2, 3])
     // State variable for loading status, with initial value as false
     const [loading, setLoading] = useState(false)
-
+    // Use the navigation hook from react-navigation
     const navigation = useNavigation();
 
+    // Use effect hook to fetch trending movies when the component mounts
     useEffect(() => {
         getTrendingMovies()
     }, [])
 
+    // Function to fetch trending movies
     const getTrendingMovies = async () => {
+        // Fetch trending movies
         const data = await fetchTrendingMovies();
         console.log('Got trending movies', data);
+        // If data is returned and it contains results, update the trending state
         if (data && data.results) {
             setTrending(data.results);
+            // Set loading to false after the data is fetched
             setLoading(false);
         }
     }
