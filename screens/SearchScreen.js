@@ -49,15 +49,23 @@ export default function SearchScreen() {
 
             {/* search input */}
             <View
-                className="mx-4 mb-3 flex-row justify-between items-center border border-neutral-500 rounded-full" >
+                // Container for the search input and close button
+                className="mx-4 mb-3 flex-row justify-between items-center border border-neutral-500 rounded-full"
+            >
                 <TextInput
+                    // Call the handleTextDebounce function whenever the text changes
                     onChangeText={handleTextDebounce}
+                    // Placeholder text for the input
                     placeholder="Search Movie"
+                    // Color of the placeholder text
                     placeholderTextColor={'lightgray'}
+                    // Styling for the input text
                     className="pb-1 pl-6 flex-1 text-base font-semibold text-white tracking-wider"
                 />
                 <TouchableOpacity
+                    // Navigate to the Home screen when the button is pressed
                     onPress={() => navigation.navigate('Home')}
+                    // Styling for the button
                     className="rounded-full p-3 m-1 bg-neutral-500"
                 >
                     <XMarkIcon size="25" color="white" />
