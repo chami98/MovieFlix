@@ -3,28 +3,28 @@ import { apiKey } from "../constants";
 
 
 // endpoints
-const apiBaseUrl = 'https://api.themoviedb.org/3';
-const trendingMoviesEndpoint = `${apiBaseUrl}/trending/movie/day?api_key=${apiKey}`;
-const upcomingMoviesEndpoint = `${apiBaseUrl}/movie/upcoming?api_key=${apiKey}`;
-const topRatedMoviesEndpoint = `${apiBaseUrl}/movie/top_rated?api_key=${apiKey}`;
-const searchMoviesEndpoint = `${apiBaseUrl}/search/movie?api_key=${apiKey}`;
-
+const apiBaseUrl = 'https://api.themoviedb.org/3'; // Base URL for the Movie Database API
+const trendingMoviesEndpoint = `${apiBaseUrl}/trending/movie/day?api_key=${apiKey}`; // Endpoint to fetch trending movies
+const upcomingMoviesEndpoint = `${apiBaseUrl}/movie/upcoming?api_key=${apiKey}`; // Endpoint to fetch upcoming movies
+const topRatedMoviesEndpoint = `${apiBaseUrl}/movie/top_rated?api_key=${apiKey}`; // Endpoint to fetch top-rated movies
+const searchMoviesEndpoint = `${apiBaseUrl}/search/movie?api_key=${apiKey}`; // Endpoint to search for movies
 
 // endpoints with dynamic params
 
 // movie
-const movieDetailsEndpoint = id => `${apiBaseUrl}/movie/${id}?api_key=${apiKey}`;
-const movieCreditsEndpoint = id => `${apiBaseUrl}/movie/${id}/credits?api_key=${apiKey}`;
-const similarMoviesEndpoint = id => `${apiBaseUrl}/movie/${id}/similar?api_key=${apiKey}`;
+const movieDetailsEndpoint = id => `${apiBaseUrl}/movie/${id}?api_key=${apiKey}`; // Endpoint to fetch details of a specific movie
+const movieCreditsEndpoint = id => `${apiBaseUrl}/movie/${id}/credits?api_key=${apiKey}`; // Endpoint to fetch credits of a specific movie
+const similarMoviesEndpoint = id => `${apiBaseUrl}/movie/${id}/similar?api_key=${apiKey}`; // Endpoint to fetch similar movies of a specific movie
 
 // person
-const personDetailsEndpoint = id => `${apiBaseUrl}/person/${id}?api_key=${apiKey}`;
-const personMoviesEndpoint = id => `${apiBaseUrl}/person/${id}/movie_credits?api_key=${apiKey}`;
+const personDetailsEndpoint = id => `${apiBaseUrl}/person/${id}?api_key=${apiKey}`; // Endpoint to fetch details of a specific person
+const personMoviesEndpoint = id => `${apiBaseUrl}/person/${id}/movie_credits?api_key=${apiKey}`; // Endpoint to fetch movies associated with a specific person
 
 // functions to get images of different widths, (show images using these to improve the loading times)
-export const image500 = posterPath => posterPath ? 'https://image.tmdb.org/t/p/w500' + posterPath : null;
-export const image342 = posterPath => posterPath ? 'https://image.tmdb.org/t/p/w342' + posterPath : null;
-export const image185 = posterPath => posterPath ? 'https://image.tmdb.org/t/p/w185' + posterPath : null;
+export const image500 = posterPath => posterPath ? 'https://image.tmdb.org/t/p/w500' + posterPath : null; // Function to get an image of width 500
+export const image342 = posterPath => posterPath ? 'https://image.tmdb.org/t/p/w342' + posterPath : null; // Function to get an image of width 342
+export const image185 = posterPath => posterPath ? 'https://image.tmdb.org/t/p/w185' + posterPath : null; // Function to get an image of width 185
+
 
 
 // fallback images 
